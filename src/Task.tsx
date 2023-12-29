@@ -6,10 +6,11 @@ interface TaskProps {
 }
 
 const Task: React.FC<TaskProps> = ({ task, onDelete }) => (
-  <div>
+  <div className='task'>
     <span>{task.text}</span>
-    <button onClick={onDelete}>Удалить</button>
+    <button className='btn' onClick={onDelete}>Удалить</button>
   </div>
 );
+
 
 export default Task;

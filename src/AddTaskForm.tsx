@@ -1,26 +1,26 @@
-// src/AddTaskForm.tsx
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState } from 'react';
 
 interface AddTaskFormProps {
-  onAddTask: (newTask: { id: string; text: string }) => void;
+  onAddTask: (newTaskText: string) => void;
 }
 
 const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask }) => {
-  const [currentTask, setCurrentTask] = useState<string>('');
+  const [newTaskText, setNewTaskText] = useState('');
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setCurrentTask(e.target.value);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewTaskText(e.target.value);
+  };
 
   const handleAddTask = () => {
-    if (currentTask.trim() !== '') {
-      onAddTask({ id: Date.now().toString(), text: currentTask });
-      setCurrentTask('');
+    if (newTaskText.trim() !== '') {
+      onAddTask(newTaskText);
+      setNewTaskText('');
     }
   };
 
   return (
-    <div className='Form'>
-      <input type="text" value={currentTask} onChange={handleInputChange} />
+    <div>
+      <input type="text" value={newTaskText} onChange={handleInputChange} />
       <button onClick={handleAddTask}>Add</button>
     </div>
   );

@@ -13,18 +13,24 @@ const App: React.FC = () => {
     { id: '2', text: 'Посадить дерево' },
   ]);
 
-  const handleAddTask = (newTask: TaskItem) => setTasks([...tasks, newTask]);
-
-  const handleDeleteTask = (taskId: string) => {
-    const updatedTasks = [...tasks];
-    const indexToDelete = updatedTasks.findIndex(task => task.id === taskId);
-
-    if (indexToDelete !== -1) {
-      updatedTasks.splice(indexToDelete, 1);
-      setTasks(updatedTasks);
-    }
+  const handleAddTask = (newTaskText: string) => {
+    const newTask: TaskItem = {
+      id: generateUniqueId(),
+      text: newTaskText,
+    };
+    setTasks((prevTasks) => [...prevTasks, newTask]);
   };
 
+  const handleDeleteTask = (taskId: string) => {
+    setTasks((prevTasks) => {
+      const updatedTasks = prevTasks.filter((task) => task.id !== taskId);
+      return updatedTasks;
+    });
+  };
+
+  const generateUniqueId = (): string => {
+    return Date.now().toString();
+  };
 
   return (
     <div>
@@ -38,3 +44,5 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+

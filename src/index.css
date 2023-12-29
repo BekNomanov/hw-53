@@ -1,0 +1,33 @@
+
+
+#root {
+  max-width: 400px;
+  margin: 0 auto;
+  border: 1px solid #bebebe;
+  background-color: beige;
+  padding: 20px;
+}
+
+.h1 {
+  text-align: center;
+}
+
+.Form {
+  margin: 0 0 50px 100px;
+
+}
+
+.task {
+  border: 1px solid #c0c0c0;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 20px 0 20px;
+  min-height: 50px;
+}
+
+.btn {
+  float: right;
+  margin-left: 15px;
+}
+
+
